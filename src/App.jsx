@@ -21,7 +21,7 @@ function App() {
       title: "Estudar matemática",
       description: "Estudar matemática para se tornar um desenvolvedor full stack.",
       isCompleted: false,
-    },
+    }
   ])
 
   // Essa function funciona da seguinte forma:
@@ -38,8 +38,10 @@ function App() {
     setTasks(newTasks);
   }
 
+  // Essa função deleta a tarefa após clicar no botão com o ícone de lixeira.
   function onDeleteTaskClick(taskId) {
-    
+    const newTasks = tasks.filter(task => task.id !== taskId);
+    setTasks(newTasks);
   }
 
   return (
@@ -47,7 +49,10 @@ function App() {
       <div className="w-[500px]">
         <h1 className="text-3xl text-slate-100 font-bold text-center">Gerenciador de Tarefas</h1>
         <AddTask />
-        <Tasks tasks={tasks} onTaskClick={onTaskClick} />
+        <Tasks 
+        tasks={tasks} 
+        onTaskClick={onTaskClick} 
+        onDeleteTaskClick={onDeleteTaskClick} />
       </div>
 
     </div>
